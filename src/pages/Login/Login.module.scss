@@ -1,0 +1,79 @@
+.box {
+  height: calc(100vh - 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
+  box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
+
+  margin: 0 auto;
+  max-width: 60vh;
+  height: max-content;
+  display: flex;
+  flex: 2;
+  gap: 10px;
+  padding: 30px;
+}
+
+.left,
+.right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.btnGoogle {
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background-color: rgb(235, 79, 79);
+  display: flex;
+  gap: 8px;
+
+  padding: 10px 30px;
+  &:hover {
+    background-color: red;
+  }
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: lightgray;
+  font-size: 14px;
+  input {
+    padding: 5px 15px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    cursor: pointer;
+    &::placeholder {
+      color: rgb(245, 229, 229);
+    }
+  }
+}
+
+.text {
+  font-size: 11px;
+  .register {
+    color: rgb(88, 88, 212);
+  }
+}
+.btnLogin {
+  padding: 8px 0;
+  border-radius: 5px;
+  width: 70%;
+  background-color: rgb(160, 159, 159);
+  color: white;
+  &:hover {
+    background-color: gray;
+  }
+}
