@@ -1,12 +1,16 @@
+import { useDispatch } from "react-redux";
 import s from "./Register.module.scss";
 
 import { useForm } from "react-hook-form";
+import { registerThunk } from "../../redux/auth/operations";
 
 const Register = () => {
   const { handleSubmit, register, reset } = useForm();
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
+    dispatch(registerThunk(data));
+    reset();
   };
   return (
     <div className={s.register}>
@@ -22,7 +26,7 @@ const Register = () => {
         </label>
         <label className={s.label}>
           <span>Password:</span>
-          <input type="text" {...register("password")} />
+          <input type="password" {...register("password")} />
         </label>
 
         <button className={s.btnRegister}>Register</button>

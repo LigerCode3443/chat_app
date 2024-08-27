@@ -1,13 +1,18 @@
 import s from "./Login.module.scss";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { loginThunk } from "../../redux/auth/operations";
 
 const Login = () => {
   const { handleSubmit, register, reset } = useForm();
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
+    dispatch(loginThunk(data));
     console.log(data);
+    reset();
   };
   return (
     <div className={s.box}>
@@ -20,15 +25,15 @@ const Login = () => {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className={s.right}>
-          <p>Login</p>
+          <p>Email:</p>
           <label className={s.label}>
             <span>Login:</span>
-            <input type="text" placeholder="Login" {...register("login")} />
+            <input type="text" placeholder="Login" {...register("email")} />
           </label>
           <label className={s.label}>
             <span>Password:</span>
             <input
-              type="text"
+              type="password"
               placeholder="Password"
               {...register("password")}
             />

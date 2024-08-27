@@ -1,20 +1,32 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./pages/Login/Login";
-import Layout from "./components/Layout";
 import Register from "./pages/Register/Register";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
+import Chat from "./pages/Chat/Chat";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsRefresh, selectUser } from "./redux/auth/selectors";
+import { useEffect } from "react";
+import { refreshThunk } from "./redux/auth/operations";
 
 function App() {
-  return (
+  const isRefresh = useSelector(selectIsRefresh);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshThunk());
+  }, [dispatch]);
+
+  return isRefresh ? (
+    <p>Loading</p>
+  ) : (
     <>
       <Routes>
         <Route
           path="/"
           element={
             <PrivateRoute>
-              <Layout />
+              <Chat />
             </PrivateRoute>
           }
         />

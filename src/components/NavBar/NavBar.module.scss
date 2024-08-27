@@ -1,0 +1,59 @@
+.wrapper {
+  flex: 1.5;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+  gap: 20px;
+  background-color: rgb(231, 229, 229);
+
+  input {
+    padding: 5px 15px;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+
+    &::placeholder {
+      color: rgb(145, 141, 141);
+    }
+    &:hover {
+      border: 1px solid grey;
+    }
+  }
+}
+
+.navBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  div {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.btnLogout {
+  padding: 4px 0;
+  border-radius: 5px;
+  width: 20%;
+  background-color: rgb(160, 159, 159);
+  color: white;
+  &:hover {
+    background-color: gray;
+  }
+}
+.title {
+  padding: 23px 15px;
+  color: rgb(29, 193, 193);
+}
+.friend:hover {
+  background-color: lightgray;
+}
