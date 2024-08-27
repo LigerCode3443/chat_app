@@ -11,16 +11,16 @@ const Chat = () => {
   const [currentChat, setCurrentChat] = useState();
   const [socket, setSocket] = useState();
   const [arrivalMessage, setArrivalMessage] = useState(null);
-  // useEffect(() => {
-  //   setSocket(io("ws://localhost:3000"));
-  //   // socket?.on("getMessage", (data) => {
-  //   //   setArrivalMessage({
-  //   //     sender: data.senderId,
-  //   //     text: data.text,
-  //   //     createdAt: Date.now(),
-  //   //   });
-  //   // });
-  // }, []);
+  useEffect(() => {
+    setSocket(io("ws://localhost:3000"));
+    // socket?.on("getMessage", (data) => {
+    //   setArrivalMessage({
+    //     sender: data.senderId,
+    //     text: data.text,
+    //     createdAt: Date.now(),
+    //   });
+    // });
+  }, []);
 
   useEffect(() => {
     socket?.emit("addUser", user._id);
