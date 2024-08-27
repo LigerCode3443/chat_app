@@ -1,6 +1,6 @@
 import ChatMessage from "../../components/ChatMessage/ChatMessage";
 import s from "./Chat.module.scss";
-import NavBar from "../../components/NavBar/NavBAr";
+import NavBar from "../../components/NavBar/NavBar";
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { useSelector } from "react-redux";
