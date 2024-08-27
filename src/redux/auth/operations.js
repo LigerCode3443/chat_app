@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { chatApi, clearAuthHeder, setAuthHeader } from "../../config/chatApi";
+import { allUsersThunk } from "../conversation/operations";
 
 export const registerThunk = createAsyncThunk(
   "register",
@@ -56,6 +57,7 @@ export const refreshThunk = createAsyncThunk(
     try {
       setAuthHeader(auth.token);
       const { data } = await chatApi.get("/auth/current");
+      thunkApi.dispatch(allUsersThunk());
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

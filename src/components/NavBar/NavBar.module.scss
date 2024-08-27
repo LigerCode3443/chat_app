@@ -57,3 +57,29 @@
 .friend:hover {
   background-color: lightgray;
 }
+.userBox {
+  padding: 3px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: gray;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+  }
+  button {
+    padding: 2px 5px;
+    background-color: rgb(173, 171, 171);
+    color: black;
+    border-radius: 7px;
+    &:hover {
+      background-color: gray;
+    }
+  }
+}

@@ -13,6 +13,20 @@ export const conversationThunk = createAsyncThunk(
     }
   }
 );
+
+export const addConversationThunk = createAsyncThunk(
+  "addConversation",
+  async (chat, thunkApi) => {
+    try {
+      const { data } = await chatApi.post("/conversations", chat);
+      thunkApi.dispatch(conversationThunk());
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const userConversationThunk = createAsyncThunk(
   "userConversation",
   async (id, thunkApi) => {
@@ -24,7 +38,20 @@ export const userConversationThunk = createAsyncThunk(
     try {
       setAuthHeader(auth.token);
       const { data } = await chatApi.get(`auth/${id}`);
-      console.log(data);
+
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const allUsersThunk = createAsyncThunk(
+  "allUsers",
+  async (_, thunkApi) => {
+    try {
+      const { data } = await chatApi.get("/auth/users/all");
+
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

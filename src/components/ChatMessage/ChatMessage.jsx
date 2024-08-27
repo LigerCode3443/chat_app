@@ -8,12 +8,20 @@ import { selectMessage } from "../../redux/message/selectors";
 import { selectUser } from "../../redux/auth/selectors";
 import { format } from "timeago.js";
 
-const ChatMessage = ({ currentChat }) => {
+const ChatMessage = ({ currentChat, socket, arrivalMessage }) => {
   const [newMessage, setNewMessage] = useState();
+
+  const [messageArr, setMessageArr] = useState();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const message = useSelector(selectMessage);
   const scrollRef = useRef();
+
+  // useEffect(() => {
+  //   arrivalMessage &&
+  //     currentChat?.members.includes(arrivalMessage.sender) &&
+  //     setMessageArr((prev) => [...prev, ...message, arrivalMessage]);
+  // }, [arrivalMessage, currentChat, message]);
 
   useEffect(() => {
     dispatch(messageThunk(currentChat?._id));
@@ -26,6 +34,16 @@ const ChatMessage = ({ currentChat }) => {
       text: newMessage,
       conversationId: currentChat._id,
     };
+    // const receiverId = currentChat.members.find(
+    //   (member) => member !== user._id
+    // );
+
+    // socket?.emit("sendMessage", {
+    //   senderId: user._id,
+    //   receiverId,
+    //   text: newMessage,
+    // });
+
     dispatch(sendMessageThunk(message));
     setNewMessage("");
   };
